@@ -12,32 +12,30 @@ import {StyleSheet, View, Text} from 'react-native';
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.group_1}>
-        <View style={styles.group_text}>
-          <Text style={styles.textColor}>A</Text>
-        </View>
-        <View style={styles.group_text}>
-          <Text style={styles.textColor}>B</Text>
-        </View>
-        <View style={styles.group_text}>
-          <Text style={styles.textColor}>C</Text>
-        </View>
-        <View style={styles.group_text}>
-          <Text style={styles.textColor}>D</Text>
+      <View style={styles.group(1)}>
+        <View style={styles.group_text(1, 5, 5, 5, 2.5)}>
+          <Text style={styles.textColor}>1</Text>
         </View>
       </View>
-      <View style={styles.group_2}>
-        <View style={styles.group_text}>
-          <Text style={styles.textColor}>A</Text>
+
+      <View style={styles.group(3, 'row')}>
+        <View style={styles.group_text(1, 2.5, 5, 2.5, 5)}>
+          <Text style={styles.textColor}>2</Text>
         </View>
-        <View style={styles.group_text}>
-          <Text style={styles.textColor}>B</Text>
-        </View>
-        <View style={styles.group_text}>
-          <Text style={styles.textColor}>C</Text>
-        </View>
-        <View style={styles.group_text}>
-          <Text style={styles.textColor}>D</Text>
+
+        <View style={styles.group(2, 'column')}>
+          <View style={styles.group_text(2, 2.5, 2.5, 5, 2.5)}>
+            <Text style={styles.textColor}>3</Text>
+          </View>
+
+          <View style={styles.group(1, 'row')}>
+            <View style={styles.group_text(1, 2.5, 2.5, 2.5, 5)}>
+              <Text style={styles.textColor}>4</Text>
+            </View>
+            <View style={styles.group_text(1, 2.5, 2.5, 2.5, 5)}>
+              <Text style={styles.textColor}>5</Text>
+            </View>
+          </View>
         </View>
       </View>
     </View>
@@ -56,25 +54,35 @@ const getRandomColor = function() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 10,
+    flex: 1,
     flexDirection: 'column',
   },
-  group_1: {
-    flex: 5,
-    flexDirection: 'column',
-  },
-  group_2: {
-    flex: 5,
-    flexDirection: 'row',
+  group(flexValue, flexDirection) {
+    let obj = {flex: flexValue};
+    if (flexDirection) {
+      obj.flexDirection = flexDirection;
+    }
+    return obj;
   },
   get textColor() {
     return {color: getRandomColor()};
   },
-  get group_text() {
+  group_text(
+    flexValue = 1,
+    borderTopWidth = 5,
+    borderLeftWidth = 5,
+    borderRightWidth = 5,
+    borderBottomWidth = 5,
+  ) {
     return {
+      borderColor: 'black',
+      borderTopWidth: borderTopWidth,
+      borderLeftWidth: borderLeftWidth,
+      borderRightWidth: borderRightWidth,
+      borderBottomWidth: borderBottomWidth,
       justifyContent: 'center',
       alignItems: 'center',
-      flex: 1,
+      flex: flexValue,
       backgroundColor: getRandomColor(),
     };
   },
