@@ -13,28 +13,39 @@ const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
       <View style={styles.group(1)}>
-        <View style={styles.group_text(1, 5, 5, 5, 2.5)}>
-          <Text style={styles.textColor}>1</Text>
+        <View style={styles.group(1, 'row')}>
+          <View style={styles.group_text(1, 5, 5, 2.5, 2.5)}>
+            <Text style={styles.textColor}>1</Text>
+          </View>
+          <View style={styles.group_text(2.5, 5, 2.5, 5, 2.5)}>
+            <Text style={styles.textColor}>2</Text>
+          </View>
         </View>
       </View>
 
       <View style={styles.group(3, 'row')}>
-        <View style={styles.group_text(1, 2.5, 5, 2.5, 5)}>
-          <Text style={styles.textColor}>2</Text>
-        </View>
-
-        <View style={styles.group(2, 'column')}>
-          <View style={styles.group_text(2, 2.5, 2.5, 5, 2.5)}>
-            <Text style={styles.textColor}>3</Text>
-          </View>
-
-          <View style={styles.group(1, 'row')}>
-            <View style={styles.group_text(1, 2.5, 2.5, 2.5, 5)}>
+        <View style={styles.group(3.5, 'row')}>
+          <View style={styles.group(1, 'column')}>
+            <View style={styles.group_text(1, 2.5, 5, 2.5, 2.5)}>
+              <Text style={styles.textColor}>3</Text>
+            </View>
+            <View style={styles.group_text(1.2, 2.5, 5, 2.5, 2.5)}>
               <Text style={styles.textColor}>4</Text>
             </View>
-            <View style={styles.group_text(1, 2.5, 2.5, 2.5, 5)}>
-              <Text style={styles.textColor}>5</Text>
-            </View>
+          </View>
+        </View>
+        <View style={styles.group_text(1, 2.5, 2.5, 5, 2.5)}>
+          <Text style={styles.textColor}>5</Text>
+        </View>
+      </View>
+
+      <View style={styles.group(1.2)}>
+        <View style={styles.group(1, 'row')}>
+          <View style={styles.group_text(1, 2.5, 5, 2.5, 2.5)}>
+            <Text style={styles.textColor}>6</Text>
+          </View>
+          <View style={styles.group_text(1, 2.5, 2.5, 5, 2.5)}>
+            <Text style={styles.textColor}>7</Text>
           </View>
         </View>
       </View>
