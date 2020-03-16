@@ -12,40 +12,45 @@ import {StyleSheet, View, Text} from 'react-native';
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.group(1)}>
-        <View style={styles.group(1, 'row')}>
-          <View style={styles.group_text(1, 5, 5, 2.5, 2.5)}>
-            <Text style={styles.textColor}>1</Text>
-          </View>
-          <View style={styles.group_text(2.5, 5, 2.5, 5, 2.5)}>
-            <Text style={styles.textColor}>2</Text>
-          </View>
+      <View style={styles.group(1, 'column')}>
+        <View style={styles.group_text(1)}>
+          <Text style={styles.textColor}>1</Text>
+        </View>
+        <View style={styles.group_text(1)}>
+          <Text style={styles.textColor}>2</Text>
         </View>
       </View>
 
-      <View style={styles.group(3, 'row')}>
-        <View style={styles.group(3.5, 'row')}>
+      <View style={styles.group(6, 'column')}>
+        <View style={styles.group(1, 'column')}>
+          <View style={styles.group_text(1)}>
+            <Text style={styles.textColor}>3</Text>
+          </View>
+          <View style={styles.group_text(1)}>
+            <Text style={styles.textColor}>4</Text>
+          </View>
+        </View>
+
+        <View style={styles.group(1, 'row')}>
+          <View style={styles.group(2, 'column')}>
+            <View style={styles.group_text(1)}>
+              <Text style={styles.textColor}>5</Text>
+            </View>
+            <View style={styles.group_text(1)}>
+              <Text style={styles.textColor}>6</Text>
+            </View>
+          </View>
+
           <View style={styles.group(1, 'column')}>
-            <View style={styles.group_text(1, 2.5, 5, 2.5, 2.5)}>
-              <Text style={styles.textColor}>3</Text>
+            <View style={styles.group_text(1)}>
+              <Text style={styles.textColor}>7</Text>
             </View>
-            <View style={styles.group_text(1.2, 2.5, 5, 2.5, 2.5)}>
-              <Text style={styles.textColor}>4</Text>
+            <View style={styles.group_text(1)}>
+              <Text style={styles.textColor}>8</Text>
             </View>
-          </View>
-        </View>
-        <View style={styles.group_text(1, 2.5, 2.5, 5, 2.5)}>
-          <Text style={styles.textColor}>5</Text>
-        </View>
-      </View>
-
-      <View style={styles.group(1.2)}>
-        <View style={styles.group(1, 'row')}>
-          <View style={styles.group_text(1, 2.5, 5, 2.5, 2.5)}>
-            <Text style={styles.textColor}>6</Text>
-          </View>
-          <View style={styles.group_text(1, 2.5, 2.5, 5, 2.5)}>
-            <Text style={styles.textColor}>7</Text>
+            <View style={styles.group_text(1)}>
+              <Text style={styles.textColor}>9</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -66,7 +71,7 @@ const getRandomColor = function() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
   },
   group(flexValue, flexDirection) {
     let obj = {flex: flexValue};
@@ -78,19 +83,8 @@ const styles = StyleSheet.create({
   get textColor() {
     return {color: getRandomColor()};
   },
-  group_text(
-    flexValue = 1,
-    borderTopWidth = 5,
-    borderLeftWidth = 5,
-    borderRightWidth = 5,
-    borderBottomWidth = 5,
-  ) {
+  group_text(flexValue = 1) {
     return {
-      borderColor: 'black',
-      borderTopWidth: borderTopWidth,
-      borderLeftWidth: borderLeftWidth,
-      borderRightWidth: borderRightWidth,
-      borderBottomWidth: borderBottomWidth,
       justifyContent: 'center',
       alignItems: 'center',
       flex: flexValue,
