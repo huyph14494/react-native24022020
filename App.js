@@ -12,57 +12,47 @@ import {Dimensions, StyleSheet, View, Text} from 'react-native';
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.group}>
-        <View
-          style={styles.group_text_top(
-            (Dimensions.get('window').height - 75) / 2 - 50 * 3,
-          )}>
-          <Text style={styles.textColor}>1</Text>
+      <View style={styles.group_row}>
+        <View style={styles.group_text_left()}>
+          <Text style={styles.textColor}>6</Text>
         </View>
-        <View
-          style={styles.group_text_bottom(
-            (Dimensions.get('window').height - 25) / 2 - 50 * 3 - 25,
-          )}>
+        <View style={styles.group_text_right()}>
           <Text style={styles.textColor}>7</Text>
         </View>
       </View>
 
       <View style={styles.group}>
-        <View
-          style={styles.group_text_top(
-            (Dimensions.get('window').height - 75) / 2 - 50 * 2,
-          )}>
-          <Text style={styles.textColor}>2</Text>
+        <View style={styles.group_row_center}>
+          <View style={styles.group_text_center_left(0)}>
+            <Text style={styles.textColor}>2</Text>
+          </View>
+          <View style={styles.group_text_center_right(0)}>
+            <Text style={styles.textColor}>4</Text>
+          </View>
         </View>
-        <View
-          style={styles.group_text_bottom(
-            (Dimensions.get('window').height - 25) / 2 - 50 * 2 - 25,
-          )}>
-          <Text style={styles.textColor}>6</Text>
+
+        <View style={styles.group_row_center}>
+          <View style={styles.group_text_center()}>
+            <Text style={styles.textColor}>1</Text>
+          </View>
+        </View>
+
+        <View style={styles.group_row_center}>
+          <View style={styles.group_text_center_left(0)}>
+            <Text style={styles.textColor}>3</Text>
+          </View>
+          <View style={styles.group_text_center_right(0)}>
+            <Text style={styles.textColor}>5</Text>
+          </View>
         </View>
       </View>
 
-      <View style={styles.group}>
-        <View
-          style={styles.group_text_top(
-            (Dimensions.get('window').height - 75) / 2 - 50 * 1,
-          )}>
-          <Text style={styles.textColor}>3</Text>
+      <View style={styles.group_row}>
+        <View style={styles.group_text_left(true)}>
+          <Text style={styles.textColor}>8</Text>
         </View>
-        <View
-          style={styles.group_text_bottom(
-            (Dimensions.get('window').height - 25) / 2 - 50 * 1 - 25,
-          )}>
-          <Text style={styles.textColor}>5</Text>
-        </View>
-      </View>
-
-      <View style={styles.group}>
-        <View
-          style={styles.group_text_top(
-            (Dimensions.get('window').height - 75) / 2,
-          )}>
-          <Text style={styles.textColor}>4</Text>
+        <View style={styles.group_text_right(true)}>
+          <Text style={styles.textColor}>9</Text>
         </View>
       </View>
     </View>
@@ -82,36 +72,92 @@ const getRandomColor = function() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
   },
+
   group: {
     flex: 1,
     flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  group_text_top(top = 0) {
+
+  group_row_center: {
+    height: 50,
+    width: 265,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+
+  group_row: {
+    flexDirection: 'row',
+  },
+
+  group_text_center_left(left = 0) {
     return {
       position: 'absolute',
       backgroundColor: getRandomColor(),
-      alignItems: 'center',
       justifyContent: 'center',
       height: 50,
-      width: '100%',
       paddingLeft: 40,
       paddingRight: 40,
-      top: top,
+      left: left,
     };
   },
-  group_text_bottom(bottom = 0) {
+
+  group_text_center_right(right = 0) {
     return {
       position: 'absolute',
       backgroundColor: getRandomColor(),
-      alignItems: 'center',
       justifyContent: 'center',
       height: 50,
-      width: '100%',
       paddingLeft: 40,
       paddingRight: 40,
-      bottom: bottom,
+      right: right,
+    };
+  },
+  group_text_center() {
+    return {
+      position: 'absolute',
+      backgroundColor: getRandomColor(),
+      justifyContent: 'center',
+      height: 50,
+      paddingLeft: 40,
+      paddingRight: 40,
+    };
+  },
+
+  group_text_left(isBottom) {
+    let obj = {};
+    if (isBottom) {
+      obj.bottom = 0;
+    }
+    return {
+      position: 'absolute',
+      backgroundColor: getRandomColor(),
+      justifyContent: 'center',
+      height: 50,
+      paddingLeft: 40,
+      paddingRight: 40,
+      left: 0,
+      ...obj,
+    };
+  },
+  group_text_right(isBottom) {
+    let obj = {};
+    if (isBottom) {
+      obj.bottom = 0;
+    }
+    return {
+      position: 'absolute',
+      backgroundColor: getRandomColor(),
+      justifyContent: 'center',
+      height: 50,
+      paddingLeft: 40,
+      paddingRight: 40,
+      right: 0,
+      ...obj,
     };
   },
 });
