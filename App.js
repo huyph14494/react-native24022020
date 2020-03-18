@@ -12,27 +12,24 @@ import {StyleSheet, View, Text} from 'react-native';
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
+      <View style={styles.group_top}>
+        <Text style={styles.textColor}>Top Content Here</Text>
+      </View>
+
       <View style={styles.group}>
-        <View style={styles.group_sub}>
-          <View style={styles.group_text()}>
-            <Text style={styles.textColor}>Red</Text>
-          </View>
-          <View style={styles.group_text()}>
-            <Text style={styles.textColor}>Green</Text>
-          </View>
-          <View style={styles.group_text()}>
-            <Text style={styles.textColor}>Yellow</Text>
-          </View>
-          <View style={styles.group_text()}>
-            <Text style={styles.textColor}>Pink</Text>
-          </View>
-          <View style={styles.group_text()}>
-            <Text style={styles.textColor}>Oragan</Text>
-          </View>
-          <View style={styles.group_text()}>
-            <Text style={styles.textColor}>Gray</Text>
-          </View>
+        <View style={styles.group_text_1}>
+          <Text style={styles.textColor}>First</Text>
         </View>
+        <View style={styles.group_text_2}>
+          <Text style={styles.textColor}>Second</Text>
+        </View>
+        <View style={styles.group_text_3}>
+          <Text style={styles.textColor}>Three</Text>
+        </View>
+      </View>
+
+      <View style={styles.group_bottom}>
+        <Text style={styles.textColor}>Bottom Content Here</Text>
       </View>
     </View>
   );
@@ -51,15 +48,13 @@ const getRandomColor = function() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
   },
   group: {
     flex: 1,
-    justifyContent: 'center',
+    flexDirection: 'row',
     alignItems: 'center',
-  },
-  group_sub: {
-    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   get textColor() {
     return {
@@ -69,12 +64,30 @@ const styles = StyleSheet.create({
       fontWeight: '700',
     };
   },
-  group_text() {
-    return {
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: getRandomColor(),
-    };
+  group_top: {
+    position: 'absolute',
+    alignSelf: 'center',
+    top: 0,
+    backgroundColor: getRandomColor(),
+  },
+  group_bottom: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 0,
+    backgroundColor: getRandomColor(),
+  },
+  group_text_1: {
+    position: 'absolute',
+    backgroundColor: getRandomColor(),
+    left: 75,
+  },
+  group_text_2: {
+    backgroundColor: getRandomColor(),
+  },
+  group_text_3: {
+    position: 'absolute',
+    backgroundColor: getRandomColor(),
+    right: 70,
   },
 });
 
