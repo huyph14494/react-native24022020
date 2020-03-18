@@ -12,45 +12,25 @@ import {StyleSheet, View, Text} from 'react-native';
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.group(1, 'column')}>
-        <View style={styles.group_text(1)}>
-          <Text style={styles.textColor}>1</Text>
-        </View>
-        <View style={styles.group_text(1)}>
-          <Text style={styles.textColor}>2</Text>
-        </View>
-      </View>
-
-      <View style={styles.group(6, 'column')}>
-        <View style={styles.group(1, 'column')}>
-          <View style={styles.group_text(1)}>
-            <Text style={styles.textColor}>3</Text>
+      <View style={styles.group}>
+        <View style={styles.group_sub}>
+          <View style={styles.group_text()}>
+            <Text style={styles.textColor}>Red</Text>
           </View>
-          <View style={styles.group_text(1)}>
-            <Text style={styles.textColor}>4</Text>
+          <View style={styles.group_text()}>
+            <Text style={styles.textColor}>Green</Text>
           </View>
-        </View>
-
-        <View style={styles.group(1, 'row')}>
-          <View style={styles.group(2, 'column')}>
-            <View style={styles.group_text(1)}>
-              <Text style={styles.textColor}>5</Text>
-            </View>
-            <View style={styles.group_text(1)}>
-              <Text style={styles.textColor}>6</Text>
-            </View>
+          <View style={styles.group_text()}>
+            <Text style={styles.textColor}>Yellow</Text>
           </View>
-
-          <View style={styles.group(1, 'column')}>
-            <View style={styles.group_text(1)}>
-              <Text style={styles.textColor}>7</Text>
-            </View>
-            <View style={styles.group_text(1)}>
-              <Text style={styles.textColor}>8</Text>
-            </View>
-            <View style={styles.group_text(1)}>
-              <Text style={styles.textColor}>9</Text>
-            </View>
+          <View style={styles.group_text()}>
+            <Text style={styles.textColor}>Pink</Text>
+          </View>
+          <View style={styles.group_text()}>
+            <Text style={styles.textColor}>Oragan</Text>
+          </View>
+          <View style={styles.group_text()}>
+            <Text style={styles.textColor}>Gray</Text>
           </View>
         </View>
       </View>
@@ -73,21 +53,26 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
-  group(flexValue, flexDirection) {
-    let obj = {flex: flexValue};
-    if (flexDirection) {
-      obj.flexDirection = flexDirection;
-    }
-    return obj;
+  group: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  group_sub: {
+    alignItems: 'flex-start',
   },
   get textColor() {
-    return {color: getRandomColor()};
+    return {
+      color: getRandomColor(),
+      fontSize: 20,
+      padding: 5,
+      fontWeight: '700',
+    };
   },
-  group_text(flexValue = 1) {
+  group_text() {
     return {
       justifyContent: 'center',
       alignItems: 'center',
-      flex: flexValue,
       backgroundColor: getRandomColor(),
     };
   },
