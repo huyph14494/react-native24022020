@@ -7,29 +7,63 @@
  */
 
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {Dimensions, StyleSheet, View, Text} from 'react-native';
 
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.group_top}>
-        <Text style={styles.textColor}>Top Content Here</Text>
+      <View style={styles.group}>
+        <View
+          style={styles.group_text_top(
+            (Dimensions.get('window').height - 75) / 2 - 50 * 3,
+          )}>
+          <Text style={styles.textColor}>1</Text>
+        </View>
+        <View
+          style={styles.group_text_bottom(
+            (Dimensions.get('window').height - 25) / 2 - 50 * 3 - 25,
+          )}>
+          <Text style={styles.textColor}>7</Text>
+        </View>
       </View>
 
       <View style={styles.group}>
-        <View style={styles.group_text_1}>
-          <Text style={styles.textColor}>First</Text>
+        <View
+          style={styles.group_text_top(
+            (Dimensions.get('window').height - 75) / 2 - 50 * 2,
+          )}>
+          <Text style={styles.textColor}>2</Text>
         </View>
-        <View style={styles.group_text_2}>
-          <Text style={styles.textColor}>Second</Text>
-        </View>
-        <View style={styles.group_text_3}>
-          <Text style={styles.textColor}>Three</Text>
+        <View
+          style={styles.group_text_bottom(
+            (Dimensions.get('window').height - 25) / 2 - 50 * 2 - 25,
+          )}>
+          <Text style={styles.textColor}>6</Text>
         </View>
       </View>
 
-      <View style={styles.group_bottom}>
-        <Text style={styles.textColor}>Bottom Content Here</Text>
+      <View style={styles.group}>
+        <View
+          style={styles.group_text_top(
+            (Dimensions.get('window').height - 75) / 2 - 50 * 1,
+          )}>
+          <Text style={styles.textColor}>3</Text>
+        </View>
+        <View
+          style={styles.group_text_bottom(
+            (Dimensions.get('window').height - 25) / 2 - 50 * 1 - 25,
+          )}>
+          <Text style={styles.textColor}>5</Text>
+        </View>
+      </View>
+
+      <View style={styles.group}>
+        <View
+          style={styles.group_text_top(
+            (Dimensions.get('window').height - 75) / 2,
+          )}>
+          <Text style={styles.textColor}>4</Text>
+        </View>
       </View>
     </View>
   );
@@ -48,46 +82,37 @@ const getRandomColor = function() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
   },
   group: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column',
   },
-  get textColor() {
+  group_text_top(top = 0) {
     return {
-      color: getRandomColor(),
-      fontSize: 20,
-      padding: 5,
-      fontWeight: '700',
+      position: 'absolute',
+      backgroundColor: getRandomColor(),
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 50,
+      width: '100%',
+      paddingLeft: 40,
+      paddingRight: 40,
+      top: top,
     };
   },
-  group_top: {
-    position: 'absolute',
-    alignSelf: 'center',
-    top: 0,
-    backgroundColor: getRandomColor(),
-  },
-  group_bottom: {
-    position: 'absolute',
-    alignSelf: 'center',
-    bottom: 0,
-    backgroundColor: getRandomColor(),
-  },
-  group_text_1: {
-    position: 'absolute',
-    backgroundColor: getRandomColor(),
-    left: 75,
-  },
-  group_text_2: {
-    backgroundColor: getRandomColor(),
-  },
-  group_text_3: {
-    position: 'absolute',
-    backgroundColor: getRandomColor(),
-    right: 70,
+  group_text_bottom(bottom = 0) {
+    return {
+      position: 'absolute',
+      backgroundColor: getRandomColor(),
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 50,
+      width: '100%',
+      paddingLeft: 40,
+      paddingRight: 40,
+      bottom: bottom,
+    };
   },
 });
 
