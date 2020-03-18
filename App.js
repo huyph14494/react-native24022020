@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    // backgroundColor: 'yellow',
   },
 
   group_row_center: {
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
   },
 
   group_row: {
+    height: 50,
     flexDirection: 'row',
   },
 
